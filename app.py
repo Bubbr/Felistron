@@ -16,7 +16,7 @@ client  = discord.Client()
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Game(name="f!help"))
+    await client.change_presence(activity=discord.Game(name=f"{prefix}help"))
     print(f"\nHola iniciando como {client.user}")
 
 @client.event
@@ -36,7 +36,7 @@ async def on_message(message):
             await message.channel.send(meta["error"])
     elif message.mentions:
         if client.user in message.mentions:
-            await react_mention(message, delete=False)
+            await react_mention(message)
             return
 
 client.run(token)
