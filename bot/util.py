@@ -4,14 +4,16 @@ import random
 import discord
 from discord import Asset
 
-meta     = json.load(open("bot.json"))
+meta    = json.load(open("bot.json"))
 
 color   = int(meta["color"], 16)
 prefix  = meta["prefix"]
 mention = meta["mention"]
-token = meta['token']
 
 commands = meta["commands"]
+
+with open('token.txt', 'r') as f:
+    token = f.read()
 
 async def load_img_asset(img_asset:Asset):
     import cv2

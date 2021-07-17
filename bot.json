@@ -1,0 +1,152 @@
+{
+    "prefix": "f!",
+    "creator": "<@310194549827960832>",
+    "version": 0.3,
+    "error": "Comando no valido, prueba usar el comando f!help obtener ayuda",
+    "color": "0xffab91",
+    "color_error": "0xff0000",
+    "categories": ["Info", "Fun", "Reaction", "Mic", "Economy"],
+    "avatar_url": "https://images-ext-2.discordapp.net/external/pew6QLg3YsYDmzC6yk78QOmhLQu7zl4bnMxBpQ5itSY/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/719649012860584077/6f07f3ca467d808d8c222b6f63de4632.webp",
+    "mention": [
+        {
+            "type": "generic",
+            "content": "quien me llama?",
+            "reply": false
+        },
+        {
+            "type": "generic",
+            "content": "que quieres puñetas?",
+            "reply": true
+        },
+        {
+            "type": "attachment",
+            "content": null,
+            "attachment": "./videos/pingueo.mp4",
+            "reply": false
+        },
+        {
+            "type": "attachment",
+            "content": null,
+            "attachment": "./images/nose.jpg",
+            "reply": true
+        },
+        {
+            "type": "reaction",
+            "emoji": {
+                "type": "guild",
+                "name": "seen"
+            }
+        },
+        {
+            "type": "generic",
+            "content": "Estoy en mi descanso, no molestar :sleeping:",
+            "reply": false
+        },
+        {
+            "type": "attachment",
+            "content": "quedas avisado",
+            "attachment": "./videos/cerraelorto.mp4",
+            "reply": true
+        },
+        {
+            "type": "reaction",
+            "emoji": {
+                "type": "guild",
+                "name": "ping"
+            }
+        }
+    ],
+    "commands": {
+        "info": {
+            "name": "info",
+            "aliases": ["in", "i"],
+            "description": "Muestra la informacion del bot",
+            "usage": "{prefix}{name}",
+            "category": "Info"
+        },
+        "serverinfo": {
+            "name": "serverinfo",
+            "aliases": ["serverinf", "serveri", "servinf", "sinf", "si"],
+            "description": "Muestra la informacion del servidor",
+            "usage": "{prefix}{name}",
+            "category": "Info"
+        },
+        "ping": {
+            "name": "ping",
+            "aliases": [],
+            "description": "Muestra el ping del bot",
+            "usage": "{prefix}{name}",
+            "category": "Info"
+        },
+        "help": {
+            "name": "help",
+            "aliases": ["h"],
+            "description": "Si estas perdido este comando es muy util",
+            "usage": "{prefix}{name} <comando>",
+            "category": "Info"
+        },
+        "ball": {
+            "name": "8ball",
+            "aliases": ["8b"],
+            "description": "Responde a una de tus tantas preguntas",
+            "usage": "{prefix}{name} <pregunta>",
+            "category": "Fun"
+        },
+        "avatar": {
+            "name": "avatar",
+            "aliases": [],
+            "description": "Roba el avatar de cualquier usuario",
+            "usage": "{prefix}{name} <usuario>",
+            "category": "Reaction"
+        },
+        "hd": {
+            "name": "hd",
+            "aliases": [],
+            "description": "Convierte una imagen cualquiera en una a FULL HD 4K",
+            "usage": "{prefix}{name} < imagen | usuario >",
+            "category": "Reaction"
+        },
+        "cat": {
+            "name": "cat",
+            "aliases": [],
+            "description": "Manda la foto de un gato aleatorio",
+            "usage": "{prefix}{name}",
+            "category": "Fun"
+        },
+        "sauce": {
+            "name": "sauce",
+            "aliases": ["code"],
+            "description": "Busca la salsa de una imagen",
+            "usage": "{prefix}{name} <imagen>",
+            "category": "Fun"
+        },
+        "say": {
+            "name": "say",
+            "aliases": [],
+            "description": "Con este comando voy a decir todo lo que me pidas",
+            "usage": "{prefix}{name} <mensaje>",
+            "category": "Mic"
+        },
+        "shop": {
+            "name": "shop",
+            "aliases": [],
+            "description": "Tienda oficial donde encontraras objetos carentes de valor",
+            "usage": "{prefix}{name}",
+            "category": "Economy"
+        },
+        "buy": {
+            "name": "buy",
+            "aliases": [],
+            "description": "Este comando sirver para comprar cualquier articulo de la tienda",
+            "usage": "{prefix}{name}",
+            "category": "Economy"
+        },
+        "sad": {
+            "name": "sad",
+            "description": "Te pone modo sad",
+            "aliases": [],
+            "usage": "{prefix}{name} <usuario>",
+            "category": "Reaction"
+        }
+    }
+}
