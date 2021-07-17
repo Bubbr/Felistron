@@ -131,3 +131,4 @@ dmypy.json
 # Custom project
 db.json
 token.txt
+*.xcf

@@ -1,0 +1,24 @@
+{
+    "bonk": {
+        "bg": "./images/edits/bonk_bg.png",
+        "img": {
+            "src": "./images/edits/bonk_img.png",
+            "position": [0, 0]
+        },
+        "source": {
+            "resize": [199, 166],
+            "position": [438, 192]
+        }
+    },
+    "watchmojo": {
+        "bg": "./images/edits/wmojo_bg.png",
+        "img": {
+            "src": "./images/edits/wmojo_img.png",
+            "position": [0, 0]
+        },
+        "source": {
+            "resize": [860, 488],
+            "position": [0, 3]
+        }
+    }
+}

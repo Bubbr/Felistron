@@ -1,6 +1,4 @@
 # TODO
-# Instalar pillow 
-# Conectar el proyecto con git y subirlo a github
 # Trabajar con los usuarios, levels, ranking, economia, etc
 
 

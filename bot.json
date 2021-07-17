@@ -1,7 +1,7 @@
 {
     "prefix": "f!",
     "creator": "<@310194549827960832>",
-    "version": 0.31,
+    "version": "0.41",
     "error": "Comando no valido, prueba usar el comando f!help obtener ayuda",
     "color": "0xffab91",
     "color_error": "0xff0000",
@@ -146,6 +146,20 @@
             "description": "Te pone modo sad",
             "aliases": [],
             "usage": "{prefix}{name} <usuario>",
+            "category": "Reaction"
+        },
+        "bonk": {
+            "name": "bonk",
+            "description": "Manda a alguien a la horny jail",
+            "aliases": [],
+            "usage":"{prefix}{name} <usuario>",
+            "category": "Reaction"
+        },
+        "watchmojo": {
+            "name": "watchmojo",
+            "description": "Top 10 saddest anime deaths",
+            "aliases": ["mojo", "wm"],
+            "usage": "{prefix}{name} <imagen | usuario>",
             "category": "Reaction"
         }
     }

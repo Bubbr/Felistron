@@ -12,6 +12,7 @@ import bot.cat
 import bot.sauce
 import bot.say
 import bot.shop
+import bot.img
 
 commands["info"]["func"]        = bot.info
 commands["ball"]["func"]        = bot.ball
@@ -28,3 +29,5 @@ commands["say"]["func"]         = bot.say
 commands["shop"]["func"]        = bot.shop
 commands["buy"]["func"]         = bot.shop
 
+commands["bonk"]["func"]        = bot.img
+commands["watchmojo"]["func"]   = bot.img
