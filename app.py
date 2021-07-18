@@ -10,6 +10,8 @@ from bot.config import commands
 from bot.config import token
 from bot.util import react_mention
 
+import bot.database as db
+
 client  = discord.Client()
 
 @client.event
@@ -19,6 +21,11 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    if message.author.bot:
+        return
+
+    await db.add_xp(message)
+
     if message.content.find(prefix) == 0:
         parse = message.content.split(' ')
         command = parse[0].split(prefix)[1]
@@ -29,7 +36,10 @@ async def on_message(message):
         if command:
             for cmd in commands:
                 if command == commands[cmd]["name"]:
-                    await commands[cmd]["func"].run(args, message, commands[cmd])
+                    if commands[cmd]['nsfw'] and not message.channel.is_nsfw():
+                        await message.channel.send("No puedo mandar contenido nsfw en un canal family friendly")
+                    else:
+                        await commands[cmd]["func"].run(args, message, commands[cmd])
         else:
             await message.channel.send(meta["error"])
     elif message.mentions:

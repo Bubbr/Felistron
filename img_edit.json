@@ -1,24 +1,72 @@
 {
     "bonk": {
+        "type": "generic",
         "bg": "./images/edits/bonk_bg.png",
         "img": {
             "src": "./images/edits/bonk_img.png",
-            "position": [0, 0]
+            "position": [0, 0],
+            "resize": false
         },
         "source": {
             "resize": [199, 166],
             "position": [438, 192]
-        }
+        },
+        "mask": null
     },
     "watchmojo": {
+        "type": "generic",
         "bg": "./images/edits/wmojo_bg.png",
         "img": {
             "src": "./images/edits/wmojo_img.png",
-            "position": [0, 0]
+            "position": [0, 0],
+            "resize": false
         },
         "source": {
             "resize": [860, 488],
             "position": [0, 3]
-        }
+        },
+        "mask": null
+    },
+    "toro": {
+        "type": "generic",
+        "bg": "./images/edits/toro_bg.png",
+        "img": {
+            "src": "./images/edits/toro_img.png",
+            "position": [0, 0],
+            "resize": false
+        },
+        "source": {
+            "resize": [514, 586],
+            "position": [0, 0]
+        },
+        "mask": null
+    },
+    "lgbt": {
+        "type": "generic",
+        "bg": null,
+        "img": {
+            "src": "./images/edits/lgbt_img.png",
+            "position": [0, 0],
+            "resize": "auto"
+        },
+        "source": {
+            "resize": false,
+            "position": [0, 0]
+        },
+        "mask": null
+    },
+    "urss": {
+        "type": "generic",
+        "bg": null,
+        "img": {
+            "src": "./images/edits/urss_img.png",
+            "position": [0, 0],
+            "resize": "auto"
+        },
+        "source": {
+            "resize": false,
+            "position": [0, 0]
+        },
+        "mask": null
     }
 }

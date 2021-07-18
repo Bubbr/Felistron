@@ -8,14 +8,28 @@ img_edit = json.load(open('img_edit.json'))
 
 def edit(source, cmd):
     ed = img_edit[cmd['name']]
-    bg = Image.open(ed['bg']) 
+
+    if ed['bg']:
+        bg = Image.open(ed['bg'])
+    else:
+        bg = source
 
     if ed['source']['resize']:
         source = source.resize(tuple(ed['source']['resize']))
-
+    
     img = Image.open(ed['img']['src'])
 
-    bg.paste(source, tuple(ed['source']['position']), source.convert('RGBA'))
+    if ed['img']['resize'] == "auto":
+        img = img.resize(source.size)
+    elif ed['img']['resize']:
+        img = img.resize(tuple(ed['img']['resize']))
+
+    if ed['mask']:
+        mask = Image.open(ed['mask']).convert('L')
+    else:
+        mask = source.convert('RGBA')
+
+    bg.paste(source, tuple(ed['source']['position']), mask)
 
     bg.paste(img, tuple(ed['img']['position']), img.convert('RGBA'))
 

@@ -1,11 +1,11 @@
 {
     "prefix": "f!",
     "creator": "<@310194549827960832>",
-    "version": "0.41",
+    "version": "0.50",
     "error": "Comando no valido, prueba usar el comando f!help obtener ayuda",
     "color": "0xffab91",
     "color_error": "0xff0000",
-    "categories": ["Info", "Fun", "Reaction", "Mic", "Economy"],
+    "categories": ["Info", "Fun", "Reaction", "Mic", "Economy", "Images"],
     "avatar_url": "https://images-ext-2.discordapp.net/external/pew6QLg3YsYDmzC6yk78QOmhLQu7zl4bnMxBpQ5itSY/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/719649012860584077/6f07f3ca467d808d8c222b6f63de4632.webp",
     "mention": [
         {
@@ -62,105 +62,152 @@
             "aliases": ["in", "i"],
             "description": "Muestra la informacion del bot",
             "usage": "{prefix}{name}",
-            "category": "Info"
+            "category": "Info",
+            "nsfw": false
         },
         "serverinfo": {
             "name": "serverinfo",
             "aliases": ["serverinf", "serveri", "servinf", "sinf", "si"],
             "description": "Muestra la informacion del servidor",
             "usage": "{prefix}{name}",
-            "category": "Info"
+            "category": "Info",
+            "nsfw": false
         },
         "ping": {
             "name": "ping",
             "aliases": [],
             "description": "Muestra el ping del bot",
             "usage": "{prefix}{name}",
-            "category": "Info"
+            "category": "Info",
+            "nsfw": false
         },
         "help": {
             "name": "help",
             "aliases": ["h"],
             "description": "Si estas perdido este comando es muy util",
             "usage": "{prefix}{name} <comando>",
-            "category": "Info"
+            "category": "Info",
+            "nsfw": false
         },
         "ball": {
             "name": "8ball",
             "aliases": ["8b"],
             "description": "Responde a una de tus tantas preguntas",
             "usage": "{prefix}{name} <pregunta>",
-            "category": "Fun"
+            "category": "Fun",
+            "nsfw": false
         },
         "avatar": {
             "name": "avatar",
             "aliases": [],
             "description": "Roba el avatar de cualquier usuario",
             "usage": "{prefix}{name} <usuario>",
-            "category": "Reaction"
+            "category": "Reaction",
+            "nsfw": false
         },
         "hd": {
             "name": "hd",
             "aliases": [],
             "description": "Convierte una imagen cualquiera en una a FULL HD 4K",
             "usage": "{prefix}{name} < imagen | usuario >",
-            "category": "Reaction"
+            "category": "Reaction",
+            "nsfw": false
         },
         "cat": {
             "name": "cat",
             "aliases": [],
             "description": "Manda la foto de un gato aleatorio",
             "usage": "{prefix}{name}",
-            "category": "Fun"
+            "category": "Fun",
+            "nsfw": false
         },
         "sauce": {
             "name": "sauce",
             "aliases": ["code"],
             "description": "Busca la salsa de una imagen",
             "usage": "{prefix}{name} <imagen>",
-            "category": "Fun"
+            "category": "Fun",
+            "nsfw": false
         },
         "say": {
             "name": "say",
             "aliases": [],
             "description": "Con este comando voy a decir todo lo que me pidas",
             "usage": "{prefix}{name} <mensaje>",
-            "category": "Mic"
+            "category": "Mic",
+            "nsfw": false
         },
         "shop": {
             "name": "shop",
             "aliases": [],
             "description": "Tienda oficial donde encontraras objetos carentes de valor",
             "usage": "{prefix}{name}",
-            "category": "Economy"
+            "category": "Economy",
+            "nsfw": false
         },
         "buy": {
             "name": "buy",
             "aliases": [],
             "description": "Este comando sirver para comprar cualquier articulo de la tienda",
             "usage": "{prefix}{name}",
-            "category": "Economy"
+            "category": "Economy",
+            "nsfw": false
         },
         "sad": {
             "name": "sad",
             "description": "Te pone modo sad",
             "aliases": [],
             "usage": "{prefix}{name} <usuario>",
-            "category": "Reaction"
+            "category": "Reaction",
+            "nsfw": false
         },
         "bonk": {
             "name": "bonk",
             "description": "Manda a alguien a la horny jail",
             "aliases": [],
             "usage":"{prefix}{name} <usuario>",
-            "category": "Reaction"
+            "category": "Images",
+            "nsfw": false
         },
         "watchmojo": {
             "name": "watchmojo",
             "description": "Top 10 saddest anime deaths",
             "aliases": ["mojo", "wm"],
             "usage": "{prefix}{name} <imagen | usuario>",
-            "category": "Reaction"
+            "category": "Images",
+            "nsfw": false
+        },
+        "toro": {
+            "name": "toro",
+            "description": "XD",
+            "aliases": [],
+            "usage":"{prefix}{name} < imagen | usuario >",
+            "category": "Images",
+            "nsfw": true
+        },
+        "lgbt": {
+            "name": "lgbt",
+            "description": "Lgbt",
+            "aliases": ["pride"],
+            "usage":"{prefix}{name} < imagen | usuario >",
+            "category": "Images",
+            "nsfw": false
+        },
+        "urss": {
+            "name": "urss",
+            "description": "Cuando te sientas comunista",
+            "aliases": [],
+            "usage":"{prefix}{name} < imagen | usuario >",
+            "category": "Images",
+            "nsfw": false
+        },
+        "level": {
+            "name": "level",
+            "description": "Obten el tu nivel y la experiencia que tienes",
+            "aliases": ["lvl"],
+            "usage": "{prefix}{name}",
+            "category": "Info",
+            "nsfw": false
         }
     }
 }
