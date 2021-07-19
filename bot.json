@@ -1,7 +1,7 @@
 {
     "prefix": "f!",
     "creator": "<@310194549827960832>",
-    "version": "0.5.1",
+    "version": "0.5.4",
     "error": "Comando no valido, prueba usar el comando f!help obtener ayuda",
     "color": "0xffab91",
     "color_error": "0xff0000",
@@ -188,7 +188,7 @@
         "lgbt": {
             "name": "lgbt",
             "description": "Lgbt",
-            "aliases": ["pride"],
+            "aliases": ["pride", "gay"],
             "usage":"{prefix}{name} < imagen | usuario >",
             "category": "Images",
             "nsfw": false
@@ -207,6 +207,30 @@
             "aliases": ["lvl"],
             "usage": "{prefix}{name}",
             "category": "Info",
+            "nsfw": false
+        },
+        "bet": {
+            "name": "bet",
+            "description": "Buscas apuestas? con este comando perderas hasta la ultima de tus monedas :D",
+            "aliases": [],
+            "usage": "{prefix}{name} <cantidad> <numero>",
+            "category": "Economy",
+            "nsfw": false
+        },
+        "balance": {
+            "name": "balance",
+            "description": "Para ver el dinero que tienes en tu cuenta",
+            "aliases": [],
+            "usage": "{prefix}{name}",
+            "category": "Economy",
+            "nsfw": false
+        },
+        "daily": {
+            "name": "daily",
+            "description": "Reclama tu recompensa diaria",
+            "aliases": [],
+            "usage": "{prefix}{name}",
+            "category": "Economy",
             "nsfw": false
         }
     }

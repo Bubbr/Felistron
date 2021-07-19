@@ -3,10 +3,13 @@ from pymongo import MongoClient
 import pymongo
 import json
 import math
+import random
+import datetime
 
 from discord import Embed
 
 from bot.util import color
+from bot.util import prefix
 
 meta     = json.load(open("db.json"))['database']
 
@@ -47,7 +50,8 @@ def register_user(uid):
                 "id": products.find_one({"name": "Soap"})['_id'],
                 "quantity": 1
             }
-        ]
+        ],
+        "daily": datetime.datetime.utcnow()
     }
 
     r = users.insert_one(user)
@@ -72,7 +76,67 @@ async def add_xp(ctx):
 
     if lvl > old_lvl:
         users.update_one(filter, {"$set": {"level": lvl}})
-        await ctx.channel.send(f"Felicidades {ctx.author.mention} acabas de subir al nivel {lvl}!")
+        users.update_one(filter, {"$inc": {"balance": 20*lvl}})
+        await ctx.channel.send(f"Felicidades {ctx.author.mention} acabas de subir al nivel {lvl}! "+
+                                f"Y ganaste ${20*lvl}"
+                                )
+
+async def bet(args, ctx, cmd):
+    if not args:
+        await ctx.channel.send(
+            "Debes especificar una cantidad a apostar y el numero al que apuestas\n"+
+            f"Usa el comando {prefix}help {cmd['name']} para ver mas informacion"
+            )
+        return
+    
+    quantity = int(args[0])
+
+    if len(args) < 2:
+        await ctx.channel.send(
+            "Debes especificar el numero al que apuestas (del 1 al 7)\n"+
+            f"Usa el comando {prefix}help {cmd['name']} para ver mas informacion"
+            )
+        return
+
+    
+    number = int(args[1])
+
+    if number < 1 or number > 7:
+        await ctx.channel.send(
+            "El numero debe ser entre el 1 y el 7\n"+
+            f"Usa el comando {prefix}help {cmd['name']} para ver mas informacion"
+            )
+        return
+
+    uid = ctx.author.id
+    user = users.find_one({'uid': uid})
+    user_balance = user['balance']
+
+    if user_balance < quantity:
+        await ctx.channel.send(
+            "Lo siento pero parece que no tienes suficiente dinero en tu cuenta\n"+
+            f"Te falta ${quantity-user_balance} para apostar\n"+
+            "Puedes conseguir mas dinero vendiendo objetos, subiendo de nivel "+
+            "o rogarle a otros usuarios que te presten un poco mas"
+        )
+        return
+    
+    lucia = random.randint(1, 7)
+
+    if lucia == number:
+        users.update_one({'uid': uid}, {"$inc": {"balance": quantity*2}})
+        await ctx.channel.send(
+            f"Tu numero: {number}\nNumero de la maquina: {lucia}\n\n"+
+            f"Felicidades! Acabas de ganar ${quantity*2}\n"+
+            f"Actualmente tienes ${user_balance+quantity*2} en tu cuenta!"
+            )
+    else:
+        users.update_one({'uid': uid}, {"$inc": {"balance": -quantity}})
+        await ctx.channel.send(
+            f"Tu numero: {number}\nNumero de la maquina: {lucia}\n\n"+
+            f"Lo siento, lamentablemente perdiste ${quantity}\n"+
+            f"Actualmente tienes ${user_balance-quantity} en tu cuenta"
+            )
 
 async def shop(args, ctx, cmd):
     items = list(products.find())
@@ -130,12 +194,44 @@ async def get_level(args, ctx, cmd):
 
     await ctx.channel.send(embed=embed)
 
+async def get_balance(args, ctx, cmd):
+    uid = ctx.author.id
+    balance = users.find_one({"uid": uid})['balance']
+
+    await ctx.channel.send(
+        f"Actualmente tienes ${balance} en tu cuenta"
+    )
+
+async def daily(args, ctx, cmd):
+    uid = ctx.author.id
+    user = users.find_one({'uid': uid})
+    last_daily = user['daily']
+    now = datetime.datetime.utcnow()
+
+    delta_daily = now - last_daily
+
+    if delta_daily.days >= 1:
+        users.update_one({'uid': uid}, {'$set': {'daily': now}, '$inc': {'balance': 100}})
+        await ctx.channel.send(
+            f"Felicidades, acabas de reclamar tu recompensa diaria +${100}"
+        )
+    else:
+        tomorrow = last_daily + datetime.timedelta(days=1)
+        tomorrow_delta = tomorrow - now
+        await ctx.channel.send(
+            "Aun no puedes reclamar tu recompensa diaria, tienes que esperar "+
+            f"{tomorrow_delta.seconds//3600}h {(tomorrow_delta.seconds//60)%60}m"
+        )
+
 command = {
     'shop': shop,
     'buy': buy,
-    'level': get_level
+    'level': get_level,
+    'bet': bet,
+    'balance': get_balance,
+    'daily': daily
 }
 
 async def run(args, ctx, cmd):
-    await ctx.channel.send("Comando disponible a partir de la version 1.0")
+    #await ctx.channel.send("Comando disponible a partir de la version 1.0")
     await command[cmd['name']](args, ctx, cmd) 

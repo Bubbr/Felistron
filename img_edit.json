@@ -68,5 +68,36 @@
             "position": [0, 0]
         },
         "mask": null
+    },
+    "name": {
+        "images": [
+            {
+                "src": "./images/edits/bonk_bg.png",
+                "resize": false,
+                "position": [0, 0],
+                "rotation": 0
+            },
+            {
+                "src": false,
+                "resize": false,
+                "position": [0, 0],
+                "rotation": 0
+            },
+            {
+                "src": "./images/edits/bonk_img.png",
+                "resize": false,
+                "position": [0, 0],
+                "rotation": 0
+            }
+        ],
+        "text": [
+            {
+                "font": "./fonts/font.tts",
+                "text": "Hola mundo",
+                "font_size": 24,
+                "color": "0xff0000",
+                "rotation": 0
+            }
+        ]
     }
 }

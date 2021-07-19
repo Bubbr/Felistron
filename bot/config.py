@@ -1,37 +1,40 @@
 from bot.util import *
 
-import bot.info
-import bot.ball
-import bot.help
-import bot.avatar
-import bot.sad
-import bot.ping
-import bot.serverinfo
-import bot.hd
-import bot.cat
-import bot.sauce
-import bot.say
+import bot.cmd.info
+import bot.cmd.ball
+import bot.cmd.help
+import bot.cmd.avatar
+import bot.cmd.sad
+import bot.cmd.ping
+import bot.cmd.serverinfo
+import bot.cmd.hd
+import bot.cmd.cat
+import bot.cmd.sauce
+import bot.cmd.say
 import bot.database
-import bot.img
+import bot.cmd.img
 
-commands["info"]["func"]        = bot.info
-commands["ball"]["func"]        = bot.ball
-commands["help"]["func"]        = bot.help
-commands["avatar"]["func"]      = bot.avatar
-commands["sad"]["func"]         = bot.sad
-commands["ping"]["func"]        = bot.ping
-commands["serverinfo"]["func"]  = bot.serverinfo
-commands["hd"]["func"]          = bot.hd
-commands["cat"]["func"]         = bot.cat
-commands["sauce"]["func"]       = bot.sauce
-commands["say"]["func"]         = bot.say
+commands["info"]["func"]        = bot.cmd.info
+commands["ball"]["func"]        = bot.cmd.ball
+commands["help"]["func"]        = bot.cmd.help
+commands["avatar"]["func"]      = bot.cmd.avatar
+commands["sad"]["func"]         = bot.cmd.sad
+commands["ping"]["func"]        = bot.cmd.ping
+commands["serverinfo"]["func"]  = bot.cmd.serverinfo
+commands["hd"]["func"]          = bot.cmd.hd
+commands["cat"]["func"]         = bot.cmd.cat
+commands["sauce"]["func"]       = bot.cmd.sauce
+commands["say"]["func"]         = bot.cmd.say
 
 commands["shop"]["func"]        = bot.database
 commands["buy"]["func"]         = bot.database
 commands["level"]["func"]       = bot.database
+commands["bet"]["func"]         = bot.database
+commands["balance"]["func"]     = bot.database
+commands["daily"]["func"]       = bot.database
 
-commands["bonk"]["func"]        = bot.img
-commands["watchmojo"]["func"]   = bot.img
-commands["toro"]["func"]        = bot.img
-commands["lgbt"]["func"]        = bot.img
-commands["urss"]["func"]        = bot.img
+commands["bonk"]["func"]        = bot.cmd.img
+commands["watchmojo"]["func"]   = bot.cmd.img
+commands["toro"]["func"]        = bot.cmd.img
+commands["lgbt"]["func"]        = bot.cmd.img
+commands["urss"]["func"]        = bot.cmd.img
