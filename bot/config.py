@@ -13,6 +13,7 @@ import bot.cmd.sauce
 import bot.cmd.say
 import bot.database
 import bot.cmd.img
+import bot.cmd.hentai
 
 commands["info"]["func"]        = bot.cmd.info
 commands["ball"]["func"]        = bot.cmd.ball
@@ -38,3 +39,5 @@ commands["watchmojo"]["func"]   = bot.cmd.img
 commands["toro"]["func"]        = bot.cmd.img
 commands["lgbt"]["func"]        = bot.cmd.img
 commands["urss"]["func"]        = bot.cmd.img
+
+commands["hentai"]["func"]      = bot.cmd.hentai

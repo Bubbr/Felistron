@@ -1,11 +1,11 @@
 {
     "prefix": "f!",
     "creator": "<@310194549827960832>",
-    "version": "0.5.4",
+    "version": "0.5.5",
     "error": "Comando no valido, prueba usar el comando f!help obtener ayuda",
     "color": "0xffab91",
     "color_error": "0xff0000",
-    "categories": ["Info", "Fun", "Reaction", "Mic", "Economy", "Images"],
+    "categories": ["Info", "Fun", "Reaction", "Mic", "Economy", "Images", "Nsfw"],
     "avatar_url": "https://images-ext-2.discordapp.net/external/pew6QLg3YsYDmzC6yk78QOmhLQu7zl4bnMxBpQ5itSY/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/719649012860584077/6f07f3ca467d808d8c222b6f63de4632.webp",
     "mention": [
         {
@@ -83,7 +83,7 @@
         },
         "help": {
             "name": "help",
-            "aliases": ["h"],
+            "aliases": [],
             "description": "Si estas perdido este comando es muy util",
             "usage": "{prefix}{name} <comando>",
             "category": "Info",
@@ -232,6 +232,14 @@
             "usage": "{prefix}{name}",
             "category": "Economy",
             "nsfw": false
+        },
+        "hentai": {
+            "name": "hentai",
+            "description": "Busca un h por su numero o muestra uno aleatorio",
+            "aliases": ["h"],
+            "usage": "{prefix}{name} <code>",
+            "category": "Nsfw",
+            "nsfw": true
         }
     }
 }
