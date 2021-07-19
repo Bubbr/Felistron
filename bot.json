@@ -1,7 +1,7 @@
 {
     "prefix": "f!",
     "creator": "<@310194549827960832>",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "error": "Comando no valido, prueba usar el comando f!help obtener ayuda",
     "color": "0xffab91",
     "color_error": "0xff0000",

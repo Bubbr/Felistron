@@ -76,3 +76,9 @@ async def react_mention(ctx, delete=False, delay=120):
         )
     if delete:
         await msg.delete(delay=delay)
+    
+def cmd_exists(command):
+    for cmd in commands:
+        if command in commands[cmd]['aliases'] or command == commands[cmd]['name']:
+            return commands[cmd]['name']
+    return False
