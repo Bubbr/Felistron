@@ -1,7 +1,7 @@
 {
     "prefix": "f!",
     "creator": "<@310194549827960832>",
-    "version": "0.5.5",
+    "version": "0.5.7",
     "error": "Comando no valido, prueba usar el comando f!help obtener ayuda",
     "color": "0xffab91",
     "color_error": "0xff0000",
@@ -56,12 +56,27 @@
             }
         }
     ],
+    "arg_type": {
+        "str": {
+            "name": "str",
+            "translate": "cadena de texto"
+        },
+        "user": {
+            "name": null,
+            "translate": "@usuario"
+        },
+        "img": {
+            "name": null,
+            "translate": "imagen"
+        }
+    },
     "commands": {
         "info": {
             "name": "info",
             "aliases": ["in", "i"],
             "description": "Muestra la informacion del bot",
             "usage": "{prefix}{name}",
+            "args": false,
             "category": "Info",
             "nsfw": false
         },
@@ -70,6 +85,7 @@
             "aliases": ["serverinf", "serveri", "servinf", "sinf", "si"],
             "description": "Muestra la informacion del servidor",
             "usage": "{prefix}{name}",
+            "args": false,
             "category": "Info",
             "nsfw": false
         },
@@ -78,6 +94,7 @@
             "aliases": [],
             "description": "Muestra el ping del bot",
             "usage": "{prefix}{name}",
+            "args": false,
             "category": "Info",
             "nsfw": false
         },
@@ -85,7 +102,14 @@
             "name": "help",
             "aliases": [],
             "description": "Si estas perdido este comando es muy util",
-            "usage": "{prefix}{name} <comando>",
+            "usage": "{prefix}{name} <{arg0}>",
+            "args": {
+                "arg0": {
+                    "name": "comando",
+                    "type": "str",
+                    "single": true
+                }
+            },
             "category": "Info",
             "nsfw": false
         },
@@ -93,7 +117,14 @@
             "name": "8ball",
             "aliases": ["8b"],
             "description": "Responde a una de tus tantas preguntas",
-            "usage": "{prefix}{name} <pregunta>",
+            "usage": "{prefix}{name} <{arg0}>",
+            "args": {
+                "arg0": {
+                    "name": "pregunta",
+                    "type": "str",
+                    "single": false
+                }
+            },
             "category": "Fun",
             "nsfw": false
         },
@@ -101,7 +132,14 @@
             "name": "avatar",
             "aliases": [],
             "description": "Roba el avatar de cualquier usuario",
-            "usage": "{prefix}{name} <usuario>",
+            "usage": "{prefix}{name} <{arg0}>",
+            "args": {
+                "arg0": {
+                    "name": "usuario",
+                    "type": "user",
+                    "single": true
+                }
+            },
             "category": "Reaction",
             "nsfw": false
         },
@@ -110,6 +148,13 @@
             "aliases": [],
             "description": "Convierte una imagen cualquiera en una a FULL HD 4K",
             "usage": "{prefix}{name} < imagen | usuario >",
+            "args": {
+                "arg0": {
+                    "name": "imagen",
+                    "type": "img",
+                    "single": true
+                }
+            },
             "category": "Reaction",
             "nsfw": false
         },

@@ -28,6 +28,7 @@ async def run(args, ctx, cmd):
     results = soup.find('a', attrs={'href': f"{CODE}{sauce}/1/"})
 
     img_url = results.img['data-src']
+    tags = soup.find_all('span', attrs={'class': 'tags'})
 
     embed = Embed(
         title=sauce,
@@ -35,6 +36,20 @@ async def run(args, ctx, cmd):
         color=color
     )
 
+    tag_names = ""
+
+    for tag in tags:
+        name = tag.find('span', attrs={'class', 'name'})
+
+        if name:
+            tag_url = tag.a['href']
+            tag_names += f" [{name.contents[0]}]({LINK}{tag_url}) |"
+
     embed.set_image(url=img_url)
+
+    embed.add_field(
+        name='Tags',
+        value=tag_names
+    )
 
     await ctx.channel.send(embed=embed)

@@ -82,3 +82,7 @@ def cmd_exists(command):
         if command in commands[cmd]['aliases'] or command == commands[cmd]['name']:
             return commands[cmd]['name']
     return False
+
+
+def get_color(string):
+    return int(string, 16)

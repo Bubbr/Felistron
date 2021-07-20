@@ -1,0 +1,93 @@
+{
+    "bonk": {
+        "type": "generic",
+        "images": [
+            {
+                "src": "./images/edits/bonk_bg.png",
+                "resize": false,
+                "position": [0, 0],
+                "rotation": 0
+            },
+            {
+                "src": false,
+                "resize": [199, 166],
+                "position": [438, 192],
+                "rotation": 0
+            },
+            {
+                "src": "./images/edits/bonk_img.png",
+                "resize": false,
+                "position": [0, 0],
+                "rotation": 0
+            }
+        ]
+    },
+    "watchmojo": {
+        "type": "generic",
+        "images": [
+            {
+                "src": "./images/edits/wmojo_img.png",
+                "resize": false,
+                "position": [0, 0],
+                "rotation": 0
+            },
+            {
+                "src": false,
+                "resize": [860, 488],
+                "position": [0, 3],
+                "rotation": 0
+            }
+        ]
+    },
+    "toro": {
+        "type": "generic",
+        "images": [
+            {
+                "src": "./images/edits/toro_img.png",
+                "resize": false,
+                "position": [0, 0],
+                "rotation": 0
+            },
+            {
+                "src": false,
+                "resize": [514, 586],
+                "position": [0, 0],
+                "rotation": 0
+            }
+        ]
+    },
+    "lgbt": {
+        "type": "generic",
+        "images": [
+            {
+                "src": false,
+                "resize": false,
+                "position": [0, 0],
+                "rotation": 0
+            },
+            {
+                "src": "./images/edits/lgbt_img.png",
+                "resize": "0",
+                "position": [0, 0],
+                "rotation": 0
+            }
+        ]
+    },
+    "urss": {
+        "type": "generic",
+        "images": [
+            {
+                "src": false,
+                "resize": false,
+                "position": [0, 0],
+                "rotation": 0
+            },
+            {
+                "src": "./images/edits/urss_img.png",
+                "resize": "0",
+                "position": [0, 0],
+                "rotation": 0
+            }
+        ]
+    }
+}
