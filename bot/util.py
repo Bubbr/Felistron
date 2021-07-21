@@ -9,6 +9,7 @@ meta    = json.load(open("bot.json"))
 color   = int(meta["color"], 16)
 prefix  = meta["prefix"]
 mention = meta["mention"]
+repo_url = meta['repo_url']
 
 commands = meta["commands"]
 

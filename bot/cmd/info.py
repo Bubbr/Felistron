@@ -1,6 +1,7 @@
 from discord import Embed
 from bot.util import color
 from bot.util import meta
+from bot.util import repo_url
 
 async def run(args, ctx, cmd):
     embed = Embed(
@@ -33,6 +34,10 @@ async def run(args, ctx, cmd):
 
     embed.set_thumbnail(
         url=meta['avatar_url']
+    )
+    embed.add_field(
+        name='Codigo fuente',
+        value=f"[GitHub]({repo_url})"
     )
 
     await ctx.channel.send(embed=embed)

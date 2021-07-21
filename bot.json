@@ -7,6 +7,7 @@
     "color_error": "0xff0000",
     "categories": ["Info", "Fun", "Reaction", "Mic", "Economy", "Images", "Nsfw"],
     "avatar_url": "https://images-ext-2.discordapp.net/external/pew6QLg3YsYDmzC6yk78QOmhLQu7zl4bnMxBpQ5itSY/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/719649012860584077/6f07f3ca467d808d8c222b6f63de4632.webp",
+    "repo_url": "https://github.com/Bubbr/Felistron",
     "mention": [
         {
             "type": "generic",
