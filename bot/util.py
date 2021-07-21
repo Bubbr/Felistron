@@ -86,3 +86,15 @@ def cmd_exists(command):
 
 def get_color(string):
     return int(string, 16)
+
+def parse_usage(cmd):
+    usage = cmd['usage']
+
+    result = usage.replace('{prefix}', prefix).replace('{name}', cmd['name'])
+
+    if "args" in cmd.keys():
+        args = cmd['args']
+        for arg in args:
+            result = result.replace(f"<{arg}>", f"<{args[arg]['name']}>")
+
+    return result

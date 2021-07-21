@@ -1,7 +1,7 @@
 {
     "prefix": "f!",
     "creator": "<@310194549827960832>",
-    "version": "0.5.7",
+    "version": "0.5.8",
     "error": "Comando no valido, prueba usar el comando f!help obtener ayuda",
     "color": "0xffab91",
     "color_error": "0xff0000",
@@ -56,27 +56,12 @@
             }
         }
     ],
-    "arg_type": {
-        "str": {
-            "name": "str",
-            "translate": "cadena de texto"
-        },
-        "user": {
-            "name": null,
-            "translate": "@usuario"
-        },
-        "img": {
-            "name": null,
-            "translate": "imagen"
-        }
-    },
     "commands": {
         "info": {
             "name": "info",
             "aliases": ["in", "i"],
             "description": "Muestra la informacion del bot",
             "usage": "{prefix}{name}",
-            "args": false,
             "category": "Info",
             "nsfw": false
         },
@@ -85,7 +70,6 @@
             "aliases": ["serverinf", "serveri", "servinf", "sinf", "si"],
             "description": "Muestra la informacion del servidor",
             "usage": "{prefix}{name}",
-            "args": false,
             "category": "Info",
             "nsfw": false
         },
@@ -94,7 +78,6 @@
             "aliases": [],
             "description": "Muestra el ping del bot",
             "usage": "{prefix}{name}",
-            "args": false,
             "category": "Info",
             "nsfw": false
         },
@@ -102,7 +85,7 @@
             "name": "help",
             "aliases": [],
             "description": "Si estas perdido este comando es muy util",
-            "usage": "{prefix}{name} <{arg0}>",
+            "usage": "{prefix}{name} <arg0>",
             "args": {
                 "arg0": {
                     "name": "comando",
@@ -113,11 +96,11 @@
             "category": "Info",
             "nsfw": false
         },
-        "ball": {
+        "8ball": {
             "name": "8ball",
             "aliases": ["8b"],
             "description": "Responde a una de tus tantas preguntas",
-            "usage": "{prefix}{name} <{arg0}>",
+            "usage": "{prefix}{name} <arg0>",
             "args": {
                 "arg0": {
                     "name": "pregunta",
@@ -132,7 +115,7 @@
             "name": "avatar",
             "aliases": [],
             "description": "Roba el avatar de cualquier usuario",
-            "usage": "{prefix}{name} <{arg0}>",
+            "usage": "{prefix}{name} <arg0>",
             "args": {
                 "arg0": {
                     "name": "usuario",
@@ -140,18 +123,18 @@
                     "single": true
                 }
             },
-            "category": "Reaction",
+            "category": "Mic",
             "nsfw": false
         },
         "hd": {
             "name": "hd",
             "aliases": [],
             "description": "Convierte una imagen cualquiera en una a FULL HD 4K",
-            "usage": "{prefix}{name} < imagen | usuario >",
+            "usage": "{prefix}{name} <arg0>",
             "args": {
                 "arg0": {
-                    "name": "imagen",
-                    "type": "img",
+                    "name": "imagen | usuario",
+                    "type": ["img", "user"],
                     "single": true
                 }
             },
@@ -170,22 +153,36 @@
             "name": "sauce",
             "aliases": ["code"],
             "description": "Busca la salsa de una imagen",
-            "usage": "{prefix}{name} <imagen>",
-            "category": "Fun",
+            "usage": "{prefix}{name} <arg0>",
+            "args": {
+                "arg0": {
+                    "name": "imagen",
+                    "type": "img",
+                    "single": true
+                }
+            },
+            "category": "Mic",
             "nsfw": false
         },
         "say": {
             "name": "say",
             "aliases": [],
             "description": "Con este comando voy a decir todo lo que me pidas",
-            "usage": "{prefix}{name} <mensaje>",
+            "usage": "{prefix}{name} <arg0>",
+            "args": {
+                "arg0": {
+                    "name": "mensaje",
+                    "type": "str",
+                    "single": false
+                }
+            },
             "category": "Mic",
             "nsfw": false
         },
         "shop": {
             "name": "shop",
             "aliases": [],
-            "description": "Tienda oficial donde encontraras objetos carentes de valor",
+            "description": "Muestra la tienda oficial donde encontraras objetos carentes de valor",
             "usage": "{prefix}{name}",
             "category": "Economy",
             "nsfw": false
@@ -194,7 +191,14 @@
             "name": "buy",
             "aliases": [],
             "description": "Este comando sirver para comprar cualquier articulo de la tienda",
-            "usage": "{prefix}{name}",
+            "usage": "{prefix}{name} <arg0>",
+            "args": {
+                "arg0": {
+                    "name": "articulo",
+                    "type": ["str", "int"],
+                    "single": true
+                }
+            },
             "category": "Economy",
             "nsfw": false
         },
@@ -202,7 +206,14 @@
             "name": "sad",
             "description": "Te pone modo sad",
             "aliases": [],
-            "usage": "{prefix}{name} <usuario>",
+            "usage": "{prefix}{name} <arg0>",
+            "args": {
+                "arg0": {
+                    "name": "usuario",
+                    "type": "user",
+                    "single": true
+                }
+            },
             "category": "Reaction",
             "nsfw": false
         },
@@ -210,7 +221,14 @@
             "name": "bonk",
             "description": "Manda a alguien a la horny jail",
             "aliases": [],
-            "usage":"{prefix}{name} <usuario>",
+            "usage":"{prefix}{name} <arg0>",
+            "args": {
+                "arg0": {
+                    "name": "usuario",
+                    "type": "user",
+                    "single": true
+                }
+            },
             "category": "Images",
             "nsfw": false
         },
@@ -218,7 +236,14 @@
             "name": "watchmojo",
             "description": "Top 10 saddest anime deaths",
             "aliases": ["mojo", "wm"],
-            "usage": "{prefix}{name} <imagen | usuario>",
+            "usage": "{prefix}{name} <arg0>",
+            "args": {
+                "arg0": {
+                    "name": "imagen | usuario",
+                    "type": ["img", "user"],
+                    "single": true
+                }
+            },
             "category": "Images",
             "nsfw": false
         },
@@ -226,7 +251,14 @@
             "name": "toro",
             "description": "XD",
             "aliases": [],
-            "usage":"{prefix}{name} < imagen | usuario >",
+            "usage": "{prefix}{name} <arg0>",
+            "args": {
+                "arg0": {
+                    "name": "imagen | usuario",
+                    "type": ["img", "user"],
+                    "single": true
+                }
+            },
             "category": "Images",
             "nsfw": true
         },
@@ -234,7 +266,14 @@
             "name": "lgbt",
             "description": "Lgbt",
             "aliases": ["pride", "gay"],
-            "usage":"{prefix}{name} < imagen | usuario >",
+            "usage": "{prefix}{name} <arg0>",
+            "args": {
+                "arg0": {
+                    "name": "imagen | usuario",
+                    "type": ["img", "user"],
+                    "single": true
+                }
+            },
             "category": "Images",
             "nsfw": false
         },
@@ -242,7 +281,14 @@
             "name": "urss",
             "description": "Cuando te sientas comunista",
             "aliases": [],
-            "usage":"{prefix}{name} < imagen | usuario >",
+            "usage": "{prefix}{name} <arg0>",
+            "args": {
+                "arg0": {
+                    "name": "imagen | usuario",
+                    "type": ["img", "user"],
+                    "single": true
+                }
+            },
             "category": "Images",
             "nsfw": false
         },
@@ -258,7 +304,19 @@
             "name": "bet",
             "description": "Buscas apuestas? con este comando perderas hasta la ultima de tus monedas :D",
             "aliases": [],
-            "usage": "{prefix}{name} <cantidad> <numero>",
+            "usage": "{prefix}{name} <arg0> <arg1>",
+            "args": {
+                "arg0": {
+                    "name": "cantidad",
+                    "type": "int",
+                    "single": true
+                },
+                "arg1": {
+                    "name": "numero",
+                    "type": "int",
+                    "single": true
+                }
+            },
             "category": "Economy",
             "nsfw": false
         },
@@ -283,6 +341,13 @@
             "description": "Busca un h por su numero o muestra uno aleatorio",
             "aliases": ["h"],
             "usage": "{prefix}{name} <code>",
+            "args": {
+                "arg0": {
+                    "name": "code",
+                    "type": "int",
+                    "single": true
+                }
+            },
             "category": "Nsfw",
             "nsfw": true
         }

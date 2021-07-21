@@ -16,7 +16,7 @@ import bot.cmd.img
 import bot.cmd.hentai
 
 commands["info"]["func"]        = bot.cmd.info
-commands["ball"]["func"]        = bot.cmd.ball
+commands["8ball"]["func"]       = bot.cmd.ball
 commands["help"]["func"]        = bot.cmd.help
 commands["avatar"]["func"]      = bot.cmd.avatar
 commands["sad"]["func"]         = bot.cmd.sad

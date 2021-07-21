@@ -36,20 +36,20 @@ async def run(args, ctx, cmd):
         color=color
     )
 
-    tag_names = ""
+    tag_names = []
 
     for tag in tags:
         name = tag.find('span', attrs={'class', 'name'})
 
         if name:
             tag_url = tag.a['href']
-            tag_names += f" [{name.contents[0]}]({LINK}{tag_url}) |"
+            tag_names.append(f"[{name.contents[0]}]({LINK}{tag_url})")
 
     embed.set_image(url=img_url)
 
     embed.add_field(
         name='Tags',
-        value=tag_names
+        value=" | ".join(tag_names[:-1])
     )
 
     await ctx.channel.send(embed=embed)

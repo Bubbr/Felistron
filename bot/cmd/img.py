@@ -82,7 +82,7 @@ async def run(args, ctx, cmd):
 
     if type == 'generic':
 
-        if args:
+        if args and ctx.mentions:
             img_url = ctx.mentions[0].avatar_url
         else:
             img_url = ctx.author.avatar_url

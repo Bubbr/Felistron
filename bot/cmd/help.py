@@ -2,7 +2,7 @@ from discord import Embed
 from bot.util import color
 from bot.util import commands
 from bot.util import meta
-from bot.util import prefix
+from bot.util import parse_usage
 
 async def run(args, ctx, acmd):
     if args:
@@ -20,7 +20,7 @@ async def run(args, ctx, acmd):
         
         embed.add_field(
             name='Modo de uso',
-            value=cmd['usage'].replace('{prefix}', prefix).replace('{name}', cmd['name'])
+            value=parse_usage(cmd)
         )
 
         embed.add_field(
@@ -28,10 +28,13 @@ async def run(args, ctx, acmd):
             value=cmd['category']
         )
 
-        embed.add_field(
-            name='Alias',
-            value=cmd['aliases']
-        )
+
+        if cmd['aliases']:
+            embed.add_field(
+                name='Alias',
+                value=" | ".join(cmd['aliases']),
+                inline=False
+            )
 
     else:
         embed = Embed(
