@@ -8,11 +8,10 @@ import discord
 import io
 import json
 
-
 img_edit = json.load(open('img.json'))
 
-def generic(source:Image, cmd:Dict) -> Image:
-    ed = img_edit[cmd['name']]
+def generic(source:Image, img_edit:Dict, parseable:Dict=None) -> Image:
+    ed = img_edit
     images = ed['images']
 
     if images[0]['src']:
@@ -20,6 +19,21 @@ def generic(source:Image, cmd:Dict) -> Image:
     else:
         base = source
     
+    if images[0]['resize']:
+        if type(images[0]['resize']) is list:
+            base = base.resize(tuple(images[0]['resize']))
+
+        elif type(images[0]['resize']) is str:
+            from_src = images[int(images[0]['resize'])]['src']
+
+            if from_src:
+                resize = Image.open(from_src).size
+
+            else:
+                resize = source.size
+
+            base = base.resize(resize)
+
     for img in images[1:]:
 
         if img['src']:
@@ -59,20 +73,24 @@ def generic(source:Image, cmd:Dict) -> Image:
                 text['font'],
                 text['size']
             )
+            txt = text['text']
+
+            if text['parse'] and parseable:
+                for label in parseable:
+                    txt = txt.replace(label, parseable[label])
 
             draw.text(
                 tuple(text['position']),
-                text['text'],
+                txt,
                 tuple(text['color']),
                 font=font
             )
-
 
     img_byte_arr = io.BytesIO()
     base.save(img_byte_arr, format='PNG')
     img_byte_arr = img_byte_arr.getvalue()
 
-    file = discord.File(io.BytesIO(img_byte_arr), filename=f'{cmd["name"]}.png')
+    file = discord.File(io.BytesIO(img_byte_arr), filename=f'img.png')
 
     return file
 
@@ -89,6 +107,6 @@ async def run(args, ctx, cmd):
         
         source = Image.open(requests.get(img_url, stream=True).raw)
 
-        file = generic(source, cmd)
+        file = generic(source, img_edit[cmd['name']])
 
     await ctx.channel.send(file=file)

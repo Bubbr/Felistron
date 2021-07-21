@@ -3,10 +3,10 @@
 
 import discord
 
-from bot.config import meta
 from bot.config import prefix
 from bot.config import commands
 from bot.config import token
+
 from bot.util import react_mention
 from bot.util import cmd_exists
 

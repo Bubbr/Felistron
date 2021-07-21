@@ -1,4 +1,3 @@
-from dns.resolver import query
 from pymongo import MongoClient
 import pymongo
 import json
@@ -11,7 +10,12 @@ from discord import Embed
 from bot.util import color
 from bot.util import prefix
 
+from bot.cmd.img import generic
+from PIL import Image
+import requests
+
 meta     = json.load(open("db.json"))['database']
+imd_edit = json.load(open("img.json"))
 
 USERNAME = meta['user']['username']
 PASSWORD = meta['user']['password']
@@ -39,6 +43,15 @@ def user_exists(uid):
         data.close()
         return False
 
+def upload_banner(source:Image, type:str):
+    banner = {
+        "type": "custom",
+        "file": 1
+    }
+
+def give_item(quantiy, item_id=None, item_name=None):
+    pass
+
 def register_user(uid):
     user = {
         "uid": uid,
@@ -51,7 +64,7 @@ def register_user(uid):
                 "quantity": 1
             }
         ],
-        "daily": datetime.datetime.utcnow()
+        "daily": datetime.datetime.utcnow(),
     }
 
     r = users.insert_one(user)
@@ -76,9 +89,9 @@ async def add_xp(ctx):
 
     if lvl > old_lvl:
         users.update_one(filter, {"$set": {"level": lvl}})
-        users.update_one(filter, {"$inc": {"balance": 20*lvl}})
+        users.update_one(filter, {"$inc": {"balance": 50}})
         await ctx.channel.send(f"Felicidades {ctx.author.mention} acabas de subir al nivel {lvl}! "+
-                                f"Y ganaste ${20*lvl}"
+                                f"Y ganaste ${50}"
                                 )
 
 async def bet(args, ctx, cmd):
@@ -168,31 +181,26 @@ async def buy(args, ctx, cmd):
     await ctx.channel.send(cmd['name'])
 
 async def get_level(args, ctx, cmd):
+    edit = imd_edit[cmd['name']]
     user = users.find_one({"uid": ctx.author.id})
-    
-    embed = Embed(
-        color = color
-    )
 
-    embed.add_field(
-        name = 'Nivel',
-        value = user['level']
-    )
+    xp_to_next_level = int((2**(user['level'])-0.5)*10)
 
-    embed.add_field(
-        name = 'XP',
-        value = user['xp']
-    )
+    parseable = {
+        '{user.level}': str(user['level']),
+        '{user.xp}': str(user['xp']),
+        '{user.next_xp}': str(xp_to_next_level)
+    }
 
-    embed.set_author(
-        name=ctx.author.display_name,
-        icon_url=ctx.author.avatar_url
-    )
-    embed.set_footer(
-        text=f'Solicitado por {ctx.author.display_name}'
-    )
+    edit['images'][1]['resize'][0] = int(user['xp']/xp_to_next_level*edit['images'][1]['resize'][0])
 
-    await ctx.channel.send(embed=embed)
+    user_img = ctx.author.avatar_url
+
+    source = Image.open(requests.get(user_img, stream=True).raw)
+
+    file = generic(source, edit, parseable)
+
+    await ctx.channel.send(file=file)
 
 async def get_balance(args, ctx, cmd):
     uid = ctx.author.id
