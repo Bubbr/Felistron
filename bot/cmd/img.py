@@ -3,16 +3,32 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 
+import cv2
+import numpy as np
 import requests
 import discord
 import io
 import json
 
-img_edit = json.load(open('img.json'))
+aaa = json.load(open('img.json'))
+
+def sepia(src_image):
+    gray = cv2.cvtColor(src_image, cv2.COLOR_BGR2GRAY)
+    normalized_gray = np.array(gray, np.float32)/255
+    #solid color
+    sepia = np.ones(src_image.shape)
+    sepia[:,:,0] *= 153 #B
+    sepia[:,:,1] *= 204 #G
+    sepia[:,:,2] *= 255 #R
+    #hadamard
+    sepia[:,:,0] *= normalized_gray #B
+    sepia[:,:,1] *= normalized_gray #G
+    sepia[:,:,2] *= normalized_gray #R
+    return np.array(sepia, np.uint8)
 
 def generic(source:Image, img_edit:Dict, parseable:Dict=None) -> Image:
-    ed = img_edit
-    images = ed['images']
+    edit = img_edit
+    images = edit['images']
 
     if images[0]['src']:
         base = Image.open(images[0]['src'])
@@ -42,7 +58,7 @@ def generic(source:Image, img_edit:Dict, parseable:Dict=None) -> Image:
 
         else:
             paste_img = source
-            
+
         if img['resize']:
             
             if type(img['resize']) is list:
@@ -59,16 +75,25 @@ def generic(source:Image, img_edit:Dict, parseable:Dict=None) -> Image:
 
                 paste_img = paste_img.resize(resize)
 
+        #if img['rotation']:
+        #    paste_img.rotate(img['rotate'])
+
+        if 'mask' in img:
+            #print(img['mask'])
+            mask = Image.open(img['mask']).convert('L')
+        else:
+            mask = paste_img.convert('RGBA')
+
         base.paste(
             paste_img,
             img['position'],
-            paste_img.convert('RGBA')
+            mask=mask
         )
     
-    if 'text' in ed.keys():
+    if 'text' in edit.keys():
         draw = ImageDraw.Draw(base)
         
-        for text in ed['text']:
+        for text in edit['text']:
             font = ImageFont.truetype(
                 text['font'],
                 text['size']
@@ -96,7 +121,7 @@ def generic(source:Image, img_edit:Dict, parseable:Dict=None) -> Image:
 
 
 async def run(args, ctx, cmd):
-    type = img_edit[cmd['name']]['type']
+    type = aaa[cmd['name']]['type']
 
     if type == 'generic':
 
@@ -107,6 +132,6 @@ async def run(args, ctx, cmd):
         
         source = Image.open(requests.get(img_url, stream=True).raw)
 
-        file = generic(source, img_edit[cmd['name']])
+        file = generic(source, aaa[cmd['name']])
 
     await ctx.channel.send(file=file)

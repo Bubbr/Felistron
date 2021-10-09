@@ -1,0 +1,68 @@
+{
+    "rank": {
+        "type": "generic",
+        "images": [
+            {
+                "src": "./images/edits/level/rank_bg.png",
+                "resize": false,
+                "position": [0, 0],
+                "rotation": 0
+            },
+            {
+                "src": "./images/edits/level/xp_bar.png",
+                "resize": [422, 76],
+                "position": [410, 268],
+                "rotation": 0
+            },
+            {
+                "src": false,
+                "resize": [400, 400],
+                "position": [40, 40],
+                "rotation": 0,
+                "mask": "./images/edits/level/pfp_mask.png"
+            },
+            {
+                "src": "./images/edits/level/ganyu.png",
+                "resize": false,
+                "position": [0, 0],
+                "rotation": 0,
+                "mask": "./images/edits/level/banner_mask.png"
+            },
+            {
+                "src": "./images/edits/level/rank_shade.png",
+                "resize": false,
+                "position": [0, 0],
+                "rotation": 0
+            }
+        ],
+        "text": [
+            {
+                "parse": true,
+                "font": "./fonts/Open_Sans/OpenSans-Regular.ttf",
+                "text": "Nivel {user.level}",
+                "size": 90,
+                "color": [255, 255, 255],
+                "position": [435, 25],
+                "rotation": 0
+            },
+            {
+                "parse": true,
+                "font": "./fonts/Open_Sans/OpenSans-Regular.ttf",
+                "text": "Rank #{user.rank}",
+                "size": 50,
+                "color": [255, 255, 255],
+                "position": [520, 125],
+                "rotation": 0
+            },
+            {
+                "parse": true,
+                "font": "./fonts/Open_Sans/OpenSans-Regular.ttf",
+                "text": "{user.xp} / {user.next_xp} XP",
+                "size": 40,
+                "color": [255, 255, 255],
+                "position": [515, 275],
+                "rotation": 0
+            }
+        ]
+    }
+}

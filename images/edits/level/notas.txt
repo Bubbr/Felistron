@@ -1,0 +1,13 @@
+banner size: 1280x480
+
+profile picture size: 400x400
+profile picture position: 40, 40
+
+xp bar size: 422, 76
+xp bar position: 410, 268
+esquinas redondeadas: Si
+radio: 40
+
+xp bar fill size: 422, 76
+xp bar fill position: 410, 268
+color: 7dc567

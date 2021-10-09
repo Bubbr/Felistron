@@ -89,54 +89,5 @@
                 "rotation": 0
             }
         ]
-    },
-    "level": {
-        "type": "generic",
-        "images": [
-            {
-                "src": "./images/edits/level_bg.png",
-                "resize": false,
-                "position": [0, 0],
-                "rotation": 0
-            },
-            {
-                "src": "./images/edits/level_xp.png",
-                "resize": [980, 100],
-                "position": [810, 388],
-                "rotation": 0
-            },
-            {
-                "src": false,
-                "resize": [600, 600],
-                "position": [40, 40],
-                "rotation": 0
-            },
-            {
-                "src": "./images/edits/level_img.png",
-                "resize": false,
-                "position": [0, 0],
-                "rotation": 0
-            }
-        ],
-        "text": [
-            {
-                "parse": true,
-                "font": "./fonts/Open_Sans/OpenSans-Regular.ttf",
-                "text": "Nivel {user.level}",
-                "size": 150,
-                "color": [230, 203, 173],
-                "position": [1045, 45],
-                "rotation": 0
-            },
-            {
-                "parse": true,
-                "font": "./fonts/Open_Sans/OpenSans-Regular.ttf",
-                "text": "{user.xp} / {user.next_xp} XP",
-                "size": 68,
-                "color": [230, 203, 173],
-                "position": [1130, 495],
-                "rotation": 0
-            }
-        ]
     }
 }

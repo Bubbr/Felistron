@@ -1,13 +1,16 @@
 {
     "prefix": "f!",
     "creator": "<@310194549827960832>",
-    "version": "0.5.10",
+    "version": "0.5.11",
     "error": "Comando no valido, prueba usar el comando f!help obtener ayuda",
     "color": "0xffab91",
     "color_error": "0xff0000",
-    "categories": ["Info", "Fun", "Reaction", "Mic", "Economy", "Images", "Nsfw"],
+    "cmd_not_found": ":warning: El comando **{CMD}** no existe. Usa **{PREFIX}help** para ver todos los comandos. :warning:",
+    "nsfw_message": "No puedo mandar NSFW en un canal family friendly.",
+    "categories": ["Info", "Fun", "Reaction", "Mic", "Economy", "Images", "Nsfw", "Profile"],
     "avatar_url": "https://images-ext-2.discordapp.net/external/pew6QLg3YsYDmzC6yk78QOmhLQu7zl4bnMxBpQ5itSY/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/719649012860584077/6f07f3ca467d808d8c222b6f63de4632.webp",
     "repo_url": "https://github.com/Bubbr/Felistron",
+    "coin": "feliscoin",
     "mention": [
         {
             "type": "generic",
@@ -192,11 +195,16 @@
             "name": "buy",
             "aliases": [],
             "description": "Este comando sirver para comprar cualquier articulo de la tienda",
-            "usage": "{prefix}{name} <arg0>",
+            "usage": "{prefix}{name} <arg0> <arg1>",
             "args": {
                 "arg0": {
                     "name": "articulo",
                     "type": ["str", "int"],
+                    "single": true
+                },
+                "arg1": {
+                    "name": "cantidad",
+                    "type": "int",
                     "single": true
                 }
             },
@@ -293,12 +301,12 @@
             "category": "Images",
             "nsfw": false
         },
-        "level": {
-            "name": "level",
+        "rank": {
+            "name": "rank",
             "description": "Obten el tu nivel y la experiencia que tienes",
             "aliases": ["lvl"],
             "usage": "{prefix}{name}",
-            "category": "Info",
+            "category": "Profile",
             "nsfw": false
         },
         "bet": {
@@ -351,6 +359,45 @@
             },
             "category": "Nsfw",
             "nsfw": true
-        }
+        },
+       "inventory": {
+            "name": "inventory",
+            "description": "Lista de todos los objetos que tienes",
+            "aliases": ["inv"],
+            "usage":"{prefix}{name}",
+            "category": "Economy",
+            "nsfw": false
+        },
+	"furro": {
+		"name": "furro",
+		"description": "Mide que tan furro eres, usar con cuidado!",
+		"aliases": ["furry"],
+		"usage": "{prefix}{name} <arg0>",
+		"args": {
+			"arg0": {
+				"name": "Usuario",
+				"type": "user",
+				"single": true
+			}
+		},
+		"category": "Fun",
+		"nsfw": false
+
+    	},
+	"count": {
+		"name": "count",
+		"description": "Verifica que todo vaya bien...",
+		"aliases": [],
+		"usage" :"{prefix}{name} <arg0>",
+		"args": {
+			"arg0": {
+				"name": "channel id",
+				"type": "id",
+				"single": true
+			}
+		},
+		"category": "Mic",
+		"nsfw": false
+	}
     }
 }

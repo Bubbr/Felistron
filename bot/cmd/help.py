@@ -4,7 +4,7 @@ from bot.util import commands
 from bot.util import meta
 from bot.util import parse_usage
 
-async def run(args, ctx, acmd):
+async def run(args, ctx, cmd):
     if args:
         if not args[0] in commands.keys():
             await ctx.channel.send(f":warning: El comando **{args[0]}** no existe. Usa **f!help** para ver todos los comandos")

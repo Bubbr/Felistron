@@ -7,14 +7,19 @@ from discord import Asset
 meta    = json.load(open("bot.json"))
 
 color   = int(meta["color"], 16)
-prefix  = meta["prefix"]
+PREFIX  = meta["prefix"]
 mention = meta["mention"]
 repo_url = meta['repo_url']
 
 commands = meta["commands"]
 
+NSFW_MESSAGE = meta["nsfw_message"]
+
 with open('token.txt', 'r') as f:
-    token = f.read()
+    TOKEN = f.read()
+
+async def not_found(cmd: str) -> str:
+    return meta["cmd_not_found"].replace("{CMD}", cmd).replace("{PREFIX}", PREFIX)
 
 async def load_img_asset(img_asset:Asset):
     import cv2
@@ -91,7 +96,7 @@ def get_color(string):
 def parse_usage(cmd):
     usage = cmd['usage']
 
-    result = usage.replace('{prefix}', prefix).replace('{name}', cmd['name'])
+    result = usage.replace('{prefix}', PREFIX).replace('{name}', cmd['name'])
 
     if "args" in cmd.keys():
         args = cmd['args']
@@ -99,3 +104,6 @@ def parse_usage(cmd):
             result = result.replace(f"<{arg}>", f"<{args[arg]['name']}>")
 
     return result
+
+def create_embed():
+    pass
