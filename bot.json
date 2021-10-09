@@ -1,7 +1,7 @@
 {
     "prefix": "f!",
     "creator": "<@310194549827960832>",
-    "version": "0.5.11",
+    "version": "0.5.11a",
     "error": "Comando no valido, prueba usar el comando f!help obtener ayuda",
     "color": "0xffab91",
     "color_error": "0xff0000",
@@ -383,21 +383,6 @@
 		"category": "Fun",
 		"nsfw": false
 
-    	},
-	"count": {
-		"name": "count",
-		"description": "Verifica que todo vaya bien...",
-		"aliases": [],
-		"usage" :"{prefix}{name} <arg0>",
-		"args": {
-			"arg0": {
-				"name": "channel id",
-				"type": "id",
-				"single": true
-			}
-		},
-		"category": "Mic",
-		"nsfw": false
-	}
+    	}
     }
 }

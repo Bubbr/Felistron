@@ -15,7 +15,6 @@ import bot.database
 import bot.cmd.img
 import bot.cmd.hentai
 import bot.cmd.furro
-import bot.cmd.check_count
 
 commands["info"]["func"]        = bot.cmd.info
 commands["8ball"]["func"]       = bot.cmd.ball
@@ -29,7 +28,6 @@ commands["cat"]["func"]         = bot.cmd.cat
 commands["sauce"]["func"]       = bot.cmd.sauce
 commands["say"]["func"]         = bot.cmd.say
 commands["furro"]["func"]       = bot.cmd.furro
-commands["count"]["func"]       = bot.cmd.check_count
 
 commands["shop"]["func"]        = bot.database
 commands["buy"]["func"]         = bot.database
