@@ -36,8 +36,6 @@ banners = client.get_database('store').banners
 users = client.get_database('users').data
 guilds = client.get_database('guilds').config
 
-#print("Base de datos iniciada")
-
 def user_exists(uid):
     query = {'uid': uid}
     data = users.find(query)
@@ -82,7 +80,7 @@ def register_user(uid):
                 "quantity": 1
             }
         ],
-        "daily": datetime.datetime.utcnow()
+        "daily": datetime.datetime.utcnow(),
     }
 
     r = users.insert_one(user)

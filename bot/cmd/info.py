@@ -39,5 +39,9 @@ async def run(args, ctx, cmd):
         name='Codigo fuente',
         value=f"[GitHub]({repo_url})"
     )
+    embed.add_field(
+            name='Pagina web',
+            value=f"[Felistron Web](https://felistronweb.herokuapp.com/)"
+            )
 
     await ctx.channel.send(embed=embed)

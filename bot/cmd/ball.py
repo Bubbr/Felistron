@@ -1,16 +1,25 @@
 from discord import Embed
+from discord.message import Message
 import random
 from bot.util import color
 
 wisdoms = [
-    "No lo se",
-    "Pregunta mas tarde",
+    "No lo sé",
+    "Pregunta más tarde",
     "Totalmente de acuerdo",
     "No",
-    "Si"
+    "Si",
+    "Tal vez",
+    "No estoy seguro",
+    "Confía en ello",
+    "Tengo fe",
+    "Lo que se ve no se pregunta",
+    "Lo mismo me pregunto",
+    "100% seguro",
+    "Cuenta con ello"
 ]
 
-async def run(args, ctx, cmd):
+async def run(args: list, ctx: Message, cmd: dict):
     embed = Embed(
             description=f"**Pregunta:** {' '.join(args)}\n\n**Respuesta:** {random.choice(wisdoms)}",
             color=color

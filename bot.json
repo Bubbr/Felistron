@@ -383,6 +383,21 @@
 		"category": "Fun",
 		"nsfw": false
 
-    	}
+    	},
+	"dchat": {
+		"name": "dchat",
+		"description": "Descarga el historial del chat",
+		"aliases": ["downloadc", "downloadchat"],
+		"usage": "{prefix}{name} <arg0>",
+		"args": {
+			"arg0": {
+				"name": "Limite",
+				"type": "int",
+				"single": true
+			}
+		},
+		"category": "Mic",
+		"nsfw": false
+	    }
     }
 }

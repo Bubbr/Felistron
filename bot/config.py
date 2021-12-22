@@ -15,6 +15,9 @@ import bot.database
 import bot.cmd.img
 import bot.cmd.hentai
 import bot.cmd.furro
+import bot.cmd.download_chat
+
+commands["dchat"]["func"]       = bot.cmd.download_chat
 
 commands["info"]["func"]        = bot.cmd.info
 commands["8ball"]["func"]       = bot.cmd.ball
