@@ -12,14 +12,15 @@ CODE = "/g/"
 def parse_code(url):
     return url.split('/g/')[1].split('/')[0]
 
+
 def search(args):
     # GRACIAS A TacoAnime69 https://github.com/TacoAnime69
-    # 
+    #
     # por compartir su codigo para que yo lo pueda copiar
     #
     # en realidad no es copy paste, solo tome su idea y lo implemente a mi modo
-    #  
-    # link a tu trabajo: https://github.com/TacoAnime69/RandomNhentai
+    #
+    # link a su trabajo: https://github.com/TacoAnime69/RandomNhentai
 
     search_queue = 'https://nhentai.net/search/?q='
     #print()
@@ -39,18 +40,24 @@ def search(args):
     page = requests.get(search_queue)
 
     #print(page.status_code)
-    
+
     src = page.content
 
     soup = BeautifulSoup(src, 'html.parser')
 
     result = soup.find_all('div', attrs={'class': 'gallery'})
 
+    # No results for the query
     if not result:
         return None
 
-    last_page = soup.find('a', attrs={'class': 'last'})['href']
-    last_page = int(last_page.split('&page=')[1])
+    last_page = soup.find('a', attrs={'class': 'last'})
+
+    # Only one page for the query
+    if not last_page:
+        last_page = 1
+    else:
+        last_page = int(last_page['href'].split('&page=')[1])
 
     random_page = random.randint(1, last_page)
     random_url = f"{search_queue}&page={random_page}"
@@ -81,13 +88,13 @@ async def run(args, ctx, cmd):
             int(args[0])
             sauce = str(args[0])
 
-        except ValueError:            
+        except ValueError:
             sauce = search(args)
 
             if not sauce:
                 await ctx.channel.send("No se encontraron resultados")
                 return
-        
+
         url = LINK+CODE+sauce
     else:
         request = requests.get(url=LINK+RANDOM)

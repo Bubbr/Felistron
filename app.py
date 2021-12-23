@@ -21,7 +21,6 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     await client.change_presence(activity=discord.Game(name=f"{PREFIX}help"))
-
 #    for member in client.get_all_members():
 #        if (db.user_exists(member.id)):
 #            update = {
@@ -33,7 +32,7 @@ async def on_ready():
 #
 #            #db.users.update_one({"uid": member.id}, update)
 #
-#    print(f"\nHola iniciando como {client.user}\n")
+    print(f"\nHola iniciando como {client.user}\n")
 
 
 @client.event

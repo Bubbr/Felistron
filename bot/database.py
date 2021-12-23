@@ -38,17 +38,15 @@ guilds = client.get_database('guilds').config
 
 def user_exists(uid):
     query = {'uid': uid}
-    data = users.find(query)
+    data = users.find_one(query)
 
-    if data.count() > 0:
-        data.close()
+    if data:
         return True
     else:
-        data.close()
         return False
 
 def upload_banner(source:Image, uid):
-    
+
     img_byte = io.BytesIO()
     source.save(img_byte, format='PNG')
     img_byte = img_byte.getvalue()
@@ -94,7 +92,7 @@ async def add_xp(ctx):
         uuid = users.find_one({"uid": uid})['_id']
     else:
         uuid = register_user(uid)
-    
+
     filter = {"_id": uuid}
     users.update_one(filter, {"$inc": {"xp": 1}})
 
@@ -117,7 +115,7 @@ async def bet(args, ctx, cmd):
             f"Usa el comando {PREFIX}help {cmd['name']} para ver mas informacion"
             )
         return
-    
+
     quantity = int(args[0])
 
     if len(args) < 2:
@@ -127,7 +125,7 @@ async def bet(args, ctx, cmd):
             )
         return
 
-    
+
     number = int(args[1])
 
     if number < 1 or number > 7:
@@ -149,7 +147,7 @@ async def bet(args, ctx, cmd):
             "o rogarle a otros usuarios que te presten un poco mas"
         )
         return
-    
+
     lucia = random.randint(1, 7)
 
     if lucia == number:
@@ -169,7 +167,7 @@ async def bet(args, ctx, cmd):
 
 async def shop(args, ctx, cmd):
     items = list(products.find())
-    
+
     embed = Embed(
         title = 'Tienda',
         description = 'Compra todo lo que quieras',
@@ -312,7 +310,7 @@ async def get_inventory(args, ctx, cmd):
             value=f"Cantidad: {item_info['quantity']}",
             inline=False
         )
-    
+
     await ctx.channel.send(embed=embed)
 
 command = {
@@ -327,4 +325,4 @@ command = {
 
 async def run(args, ctx, cmd):
     #await ctx.channel.send("Comando disponible a partir de la version 1.0")
-    await command[cmd['name']](args, ctx, cmd) 
+    await command[cmd['name']](args, ctx, cmd)
